@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Database file (automatically created and seeded by db.js on first run)
+*.db
+*.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Notice Board</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-wrapper">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Digital Notice Board</h1>
+          <p>Official Institutional Announcements</p>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <div id="liveClock" style="font-size: 0.8rem; color: var(--text-muted); font-variant-numeric: tabular-nums;"></div>
+        <a href="admin.html" class="btn btn-outline btn-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Admin Portal
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <!-- Hero / Intro -->
+    <section class="hero-header">
+      <div class="hero-subtitle-badge">Centralized Campus Notices</div>
+      <h2>Latest Announcements & Notices</h2>
+      <p>Stay informed with official updates, schedules, deadlines, and events published in real-time.</p>
+    </section>
+
+    <!-- Search & Filter Controls (Module 5) -->
+    <section class="controls-card">
+      <div class="search-filter-grid">
+        <!-- Live Keyword Search -->
+        <div class="input-group">
+          <div class="input-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <input type="text" id="searchInput" class="input-control has-icon" placeholder="Search notices by keyword, title, topic...">
+        </div>
+
+        <!-- Filter by Date -->
+        <div class="input-group">
+          <input type="date" id="dateFilter" class="input-control" title="Filter by post date">
+        </div>
+
+        <!-- Reset Button -->
+        <button id="resetFiltersBtn" class="btn btn-outline" style="white-space: nowrap;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          Clear
+        </button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-chips" id="categoryChips">
+        <button class="chip active" data-category="All">All Categories</button>
+        <button class="chip" data-category="Academic">Academic</button>
+        <button class="chip" data-category="Event">Events</button>
+        <button class="chip" data-category="Urgent">Urgent</button>
+        <button class="chip" data-category="Facility">Facility</button>
+        <button class="chip" data-category="Seminar">Seminars</button>
+        <button class="chip" data-category="Sports">Sports</button>
+      </div>
+    </section>
+
+    <!-- Notice Feed Stats / Counter -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+      <div id="resultsCount" style="font-size: 0.85rem; color: var(--text-muted);">
+        Loading notices...
+      </div>
+      <div style="font-size: 0.8rem; color: var(--text-dim);">
+        Auto-refreshes periodically
+      </div>
+    </div>
+
+    <!-- Notice Display Grid (Module 4) -->
+    <div id="noticesContainer" class="notices-grid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Full Notice Modal Dialog -->
+  <div class="modal-overlay" id="noticeModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span id="modalCategoryBadge" class="badge"></span>
+        <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 id="modalTitle" style="font-size: 1.4rem; margin-bottom: 0.75rem; color: #fff;"></h2>
+        <div style="display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <span id="modalDate"></span>
+          <span id="modalAuthor"></span>
+          <span id="modalExpiry" style="color: var(--accent-amber);"></span>
+        </div>
+        <div id="modalDescription" style="font-size: 0.95rem; line-height: 1.7; color: var(--text-main); white-space: pre-wrap;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="closeModalFooterBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Digital Notice Board · Web Technology Project · Node.js &amp; SQLite Edition</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
