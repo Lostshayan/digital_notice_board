@@ -1,0 +1,29 @@
+==================================================
+  DIGITAL NOTICE BOARD - QUICK PRESENTATION GUIDE
+==================================================
+
+1. PREREQUISITES:
+   Make sure Node.js is installed on your computer:
+   https://nodejs.org/ (any version 18+)
+
+2. HOW TO RUN:
+   Open terminal / command prompt in this folder and run:
+   
+   npm install
+   npm start
+
+3. ACCESS THE WEB APPLICATION:
+   - Public Visitor Notice Board: http://localhost:3000
+   - Admin Management Console:   http://localhost:3000/admin.html
+
+4. DEFAULT ADMIN CREDENTIALS:
+   - Username: admin
+   - Password: admin123
+
+5. KEY FEATURES TO DEMO IN PRESENTATION:
+   - Module 1 (Login): Sign in with admin/admin123 (uses bcrypt encryption).
+   - Module 2 (Manage Notices): Click "Post New Notice", fill details, and publish. Edit or delete notices.
+   - Module 3 (Database): Pre-seeded SQLite database with 1-to-N relationship between admin and notices.
+   - Module 4 (Notice Display): Responsive dark-navy card grid matching the slides, with category badges and "Read notice" modal.
+   - Module 5 (Search & Filter): Live instant search by keyword (type 'exam') and filter by category chips.
+==================================================
